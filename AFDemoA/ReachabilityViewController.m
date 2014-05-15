@@ -39,6 +39,10 @@
 
 - (void)_commonSetup
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_AFNetworkingReachabilityDidChangeNotificationReceived:)
+                                                 name:AFNetworkingReachabilityDidChangeNotification
+                                               object:nil];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
@@ -55,10 +59,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(_AFNetworkingReachabilityDidChangeNotificationReceived:)
-                                                 name:AFNetworkingReachabilityDidChangeNotification
-                                               object:nil];
 }
 
 
